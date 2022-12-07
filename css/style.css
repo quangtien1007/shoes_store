@@ -78,6 +78,7 @@ a.login:hover {
   width: 30%;
 }
 .search input.serch {
+  width: 100px;
   margin-top: 5px;
   font-size: 0.85em;
   color: #000;
@@ -1292,7 +1293,7 @@ span.glyphicon.glyphicon-share-alt {
 /*--product end her--*/
 /*--single start here--*/
 .single {
-  padding: 6em 0em;
+  padding: 0.5em 0em;
 }
 .imagezoom-view {
   height: 335px !important;
@@ -1302,9 +1303,6 @@ span.glyphicon.glyphicon-share-alt {
   color: #847057;
   font-family: "Poppins", sans-serif;
   margin-bottom: 0.6em;
-}
-.single-top-left input[type="button"] {
-  padding: 30px;
 }
 .single-top-left h1 {
   font-size: 1.6em;
@@ -2937,5 +2935,9 @@ span.glyphicon.glyphicon-envelope {
 .cart-booking {
   margin-top: 40px;
   color: black;
+}
+input[type="button"] .btnQuantity{
+  width: 2px;
+  background-color: red;
 }
 

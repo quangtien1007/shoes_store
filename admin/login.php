@@ -3,24 +3,27 @@ require_once '../library/init.php';
 if (isset($_POST['Login'])) {
     // echo 'ok';
     // Xử lý các giá trị 
-    $Username = isset($_POST['Username']) ? trim(htmlspecialchars(addslashes($_POST['Username']))) : '';
+    $Email = isset($_POST['Email']) ? trim(htmlspecialchars(addslashes($_POST['Email']))) : '';
     $Password = isset($_POST['Password']) ? trim(htmlspecialchars(addslashes($_POST['Password']))) : '';
 
-    if ($Username == "" || $Password == "") {
-        echo '<script>alert("Không được để trống Username và Password")</script>';
+    if ($Email == "" || $Password == "") {
+        echo '<script>alert("Không được để trống Email và Password")</script>';
     } else {
-        $sql = "SELECT Username, Password FROM account WHERE Username = '$Username' AND Password = '$Password' AND LoaiTK = '1'";
-        $sql1 = "SELECT Username, Password FROM account WHERE Username = '$Username' AND Password = '$Password' AND LoaiTK = '2'";
+        $sql = "SELECT Email, Password FROM account WHERE Email = '$Email' AND Password = '$Password' AND LoaiTK = 1";
+        $sql1 = "SELECT Email, Password FROM account WHERE Email = '$Email' AND Password = '$Password' AND LoaiTK = 2";
+        $sql2 = "SELECT Id, Email, Password FROM account WHERE Email = '$Email' AND Password = '$Password' AND LoaiTK = 2";
         if ($db->num_rows($sql)) {
             $db->close(); // Giải phóng
-            $session->send($Username);
+            $session->send($Email);
             new Redirect("the-loai.php");
         } else if ($db->num_rows($sql1)) {
+            $id = $db->fetch_assoc($sql2)[0];
+            $_SESSION["id_kh"] = $id["Id"];
             $db->close(); // Giải phóng
-            $session->send($Username);
+            $session->send($Email);
             new Redirect("../index.php");
         } else {
-            echo '<script>alert("Username hoặc Password không đúng")</script>';
+            echo '<script>alert("Email hoặc Password không đúng")</script>';
         }
     }
 }
@@ -49,15 +52,22 @@ if (isset($_POST['Login'])) {
     <!--header end here-->
     <!--log in start here-->
     <div class="login">
-        <div class="container">
-            <div class="login-main">
+        <div class="container-login">
+            <div class="logins-main">
                 <h1>Login</h1>
                 <div class="col-md-6 login-left">
                     <h2>Existing User</h2>
                     <form action="login.php" method="post">
-                        <input type="text" name="Username" placeholder="Username" required="">
+                        <input type="text" name="Email" placeholder="Email" required="">
                         <input type="Password" name="Password" placeholder="Password" required="">
-                        <input type="submit" name="Login" value="Login">
+                        <div class="item-login">
+                            <ul class="li-login">
+                                <li><input type="submit" name="Login" value="Login"></li>
+                            </ul>
+                            <ul class="li-login">
+                                You don't have account? <li><a class="btn-signup" href="signup.php">Signup</a></li>
+                            </ul>
+                        </div>
                     </form>
                 </div>
                 <div class="clearfix"> </div>
@@ -65,7 +75,37 @@ if (isset($_POST['Login'])) {
         </div>
     </div>
     <!--log in end here-->
+    <style>
+        .container-login {
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
+        .item-login {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        ul.li-login li {
+            display: inline-block;
+        }
+
+        .li-login li a.btn-signup {
+            font-size: 1em;
+            color: #fff;
+            padding: 0.4em 1.5em;
+            border: none;
+            background: #006340;
+            outline: none;
+            display: block;
+            margin-top: 1em;
+        }
+
+        .li-login li a.btn-signup:hover {
+            background: #847057;
+        }
+    </style>
 </body>
 
 </html>

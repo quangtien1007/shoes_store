@@ -105,9 +105,14 @@ $brand = $db->fetch_assoc($sql_get_brand);
 						<li>
 							<a href="list-booking.php"><i class="fa-sharp fa-solid fa-cart-arrow-down"></i> Cart</a>
 						</li>
-						<li>
-							<a href="./admin/login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+						<li><?php
+							if (isset($_SESSION['id_kh']))
+								echo '<a href="./admin/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>';
+							else
+								echo '<a href="./admin/login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>';
+							?>
 						</li>
+
 					</ul>
 				</div>
 			</div>

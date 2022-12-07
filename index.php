@@ -104,7 +104,7 @@ require_once 'layouts/header.php';
 												<h4>' . $sanpham['Ten'] . '</h4>
 											</div>
 											<div class="box-grid-price-rit">
-												<h4 class="item_price">' . $sanpham['Gia'] . '</h4>
+												<h4 class="item_price">' . $sanpham['Gia'] . '$</h4>
 											</div>
 											<div class="clearfix"> </div>
 										</div>
@@ -144,7 +144,7 @@ require_once 'layouts/header.php';
 											<p>Find out now</p>						
 									</div>
 									<div class="srch">
-										<span>' . $sanpham['Gia'] . '</span>
+										<span>' . $sanpham['Gia'] . '$</span>
 									</div>
 								</div>
 							</div>

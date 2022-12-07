@@ -39,7 +39,6 @@ require_once 'layouts/header.php';
 			<div class="single-top-main">
 				<div class="col-md-5 single-top">
 					<div class="flexslider">
-						<a href="cart.php">cart</a>
 						<?php
 						if (isset($sanpham)) {
 							echo
@@ -73,22 +72,85 @@ require_once 'layouts/header.php';
 						echo
 						'
 								<h1>' . $sanpham['Ten'] . '</h1>
-								<h4 class="item_price"><strong>' . $sanpham['Gia'] . '</strong></h4>
+								<h4 class="item_price"><strong>' . $sanpham['Gia'] . '$</strong></h4>
 								<p>' . $sanpham['MoTa'] . '</p>
 								';
 					}
 					?>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<form method="POST" action="single.php" enctype="multipart/form-data">
-						<?php
-						echo '<button type="submit" style ="font-size: 20px;" href="cart.php?Id=' . $sanpham["Id"] . '">Add to cart <i class="fa-sharp fa-solid fa-cart-arrow-down"></i></a>';
-						?>
-						<!-- <button name="Cart" type="submit" style="font-size: 20px;"></button> -->
-					</form>
+					<br><br><br>
+
+					<?php
+
+					//echo '<form><a class="btn btn-success" style ="font-size: 20px;" href="booking.php?Id=' . $sanpham["Id"] . '">Add to cart <i class="fa-sharp fa-solid fa-cart-arrow-down"></i></a>';
+					echo '
+					<form action="addcart.php" method="post">
+						<div class="minusPlus">
+						Quantity: &nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="button" value="-" onclick="handleMinus()" />
+							<input type="text" readonly name="amount" id="amount" value="1"/>
+							<input type="button" value="+" onclick="handlePlus()" />
+							</div>
+							<br>
+						Size:    &nbsp;&nbsp;&nbsp;&nbsp;   
+							<label class="radio-inline">
+								<input type="radio" value="41" name="size" checked>41
+							</label>
+							<label class="radio-inline">
+								<input type="radio" value="42" name="size">42
+							</label>
+							<label class="radio-inline">
+								<input type="radio" value="43" name="size">43
+							</label><br><br>
+							<input type="hidden" name="id" value="' . $san_pham_id . '" />
+							<input type="hidden" name="img" value="' . $sanpham['Anh1'] . '" />
+							<input type="hidden" name="tensp" value="' . $sanpham['Ten'] . '" />
+							<input type="hidden" name="gia" value="' . $sanpham['Gia'] . '" />
+							<input type="submit" class="btn btn-success" name="addtocart" value="Add to cart" />
+					</form>'
+					?>
+					<script>
+						let amountElement = document.getElementById('amount');
+						let amount = amountElement.value;
+
+						let render = (amount) => {
+							amountElement.value = amount;
+						}
+
+						let handlePlus = () => {
+							amount++;
+							render(amount);
+							console.log(amount)
+						}
+						let handleMinus = () => {
+							if (amount > 1) {
+								amount--;
+								render(amount);
+								console.log(amount);
+							}
+						}
+					</script>
+					<style>
+						input[type="text"] {
+							width: 40px;
+							border: 1px solid #cecece;
+							border-left: none;
+							border-right: none;
+							text-align: center;
+						}
+
+						input[type="button"] {
+							border: 1px solid #cecece;
+							background-color: white;
+						}
+
+						input[type="button"]:hover {
+							background-color: #cecece;
+						}
+
+						.minusPlus {
+							display: flex;
+						}
+					</style>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -118,7 +180,7 @@ require_once 'layouts/header.php';
 												<p>Find out now</p>
 											</div>
 											<div class="srch">
-												<span>' . $sanpham['Gia'] . '</span>
+												<span>' . $sanpham['Gia'] . '$</span>
 											</div>
 										</div>
 									</div>
