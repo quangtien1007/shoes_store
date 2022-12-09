@@ -41,6 +41,10 @@ if (isset($_POST['Login'])) {
         $_SESSION['email'] = $Email;
     }
 }
+/*
+$updateCart = "UPDATE $cartName SET Size='$Size', DiaChi='$DiaChi', SoLuong='$SoLuong' WHERE Id = $Id_Cart";
+        $updateDonhang = "UPDATE donhang SET Size='$Size', SoLuong='$SoLuong', DiaChi='$DiaChi', GhiChu='$GhiChu' WHERE Id = $Id_Cart";
+*/
 ?>
 
 

@@ -32,10 +32,10 @@ if (isset($_SESSION['cart'])) {
                     <td>' . ($i + 1) . '</td>
                     <td><img src="' . $sp[1] . '" width="100px"/></td>
                     <td>' . $sp[2] . '</td>
-                    <td>' . $sp[3] . '</td>
+                    <td>' . $sp[3] . '$</td>
                     <td>' . $sp[5] . '</td>
                     <td>' . $sp[4] . '</td>
-                    <td>' . number_format($ttien) . '</td>
+                    <td>' . number_format($ttien) . '$</td>
                     <td><a href="booking.php?Id=' . $sp[0] . '&i=' . $i . '">Đặt hàng</a></td>
                     <td><a href="delcart.php?id=' . $i . '">Xóa</a></td>
                 </tr>';

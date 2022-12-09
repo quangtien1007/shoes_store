@@ -2,7 +2,15 @@
 require_once 'library/init.php';
 $title = 'Danh sách đơn hàng';
 require_once 'layouts/header.php';
-if (isset($_SESSION['id_kh'])) {
+$id = $_SESSION["id_kh"];
+$sql = "SELECT Email from account where Id=$id";
+$exec = $db->fetch_assoc($sql)[0];
+$email = $exec["Email"];
+$arr = explode("@", $email, 2);
+$cartName = $arr[0] . '_cart';
+$cart = "SELECT COUNT(*) FROM $cartName";
+$countCart = $db->query($cart);
+if (isset($_SESSION['id_kh']) && ($countCart > 0)) {
 ?>
     <!-- main -->
     <div class="main booking">
@@ -30,6 +38,8 @@ if (isset($_SESSION['id_kh'])) {
                     $arr = explode("@", $email, 2);
                     $cartName = $arr[0] . '_cart';
                     $sql_get_list = "SELECT * FROM $cartName ORDER BY Id ASC";
+                    $sql_get_list1 = "SELECT * FROM sanpham ORDER BY Id ASC";
+                    $sanpham = $db->fetch_assoc($sql_get_list1);
                     if ($db->num_rows($sql_get_list)) {
                         foreach ($db->fetch_assoc($sql_get_list) as $key => $cartName) {
                             echo
@@ -43,7 +53,7 @@ if (isset($_SESSION['id_kh'])) {
                                   <td>' . $cartName["SoLuong"] . '</td>
                                   <td>' . $cartName["ThanhTien"] . '</td>
                                   <th>
-                                      <a class="btn btn-info" href="edit-booking.php?Id=' . $cartName["Id"] . '">Sửa</a> 
+                                      <a class="btn btn-info" href="edit-booking.php?Id=' . $cartName['Id'] - 1 . '&idsp=' . $sanpham[$key]["Id"] . '">Sửa</a> 
                                       <a class="btn btn-danger delete" Id="' . $cartName["Id"] . '"href="delete-booking.php?Id=' . $cartName["Id"] . '">Xóa</a>
                                   </th>
                               </tr>
@@ -57,6 +67,7 @@ if (isset($_SESSION['id_kh'])) {
     </div>
     <!-- //main -->
 <?php
+
 } else {
     echo '<div class="main booking">
     <div class="container" style="text-align: center;">
