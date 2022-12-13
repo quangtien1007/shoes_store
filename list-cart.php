@@ -38,18 +38,17 @@ if (isset($_SESSION['cart'])) {
                     <td>' . $sp[5] . '</td>
                     <td>' . $sp[4] . '</td>
                     <td>' . number_format($ttien) . '$</td>
-                    <td><a href="booking.php?Id=' . $sp[0] . '&i=' . $i . '">Đặt hàng</a></td>
-                    <td><a href="delcart.php?id=' . $i . '">Xóa</a></td>
+                    <td><a class="btn-book" href="booking.php?Id=' . $sp[0] . '&i=' . $i . '">Đặt hàng</a></td>
+                    <td><a class="btn-delete" href="delcart.php?id=' . $i . '"><i class="fa-solid fa-trash"></i></a></td>
                 </tr>';
                     $i++;
                 }
                 ?>
             </table>
             <style>
-                td {
-                    vertical-align: middle;
-                }
+
             </style>
+            <br>
             <p><a class="btn-cart" style="float:right;
                     margin-right: 20px;" href="delcart.php">Xóa giỏ hàng</a></p>
             <a class="btn-cart" style="margin-left: 10px;" href="index.php">Tiếp tục mua sắm nào</a>
@@ -60,7 +59,7 @@ if (isset($_SESSION['cart'])) {
             ?>
         </div>
     </div>
-    <br><br>
+    <br>
 <?php
 } else {
     echo 'Giỏ hàng rỗng hãy <a href="index.php">tiếp tục mua sắm</a>';

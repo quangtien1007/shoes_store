@@ -15,7 +15,7 @@ if (isset($_SESSION['id_kh'])) {
 if (isset($_SESSION['id_kh']) && (implode($countCart[0]) > 0)) {
 ?>
     <!-- main -->
-    <br>
+    <br><br><br><br>
     <div class="main booking">
         <div class="container">
             <h2>Đơn hàng của bạn</h2>
@@ -57,8 +57,8 @@ if (isset($_SESSION['id_kh']) && (implode($countCart[0]) > 0)) {
                                   <td>' . $cartName1["SoLuong"] . '</td>
                                   <td>' . $cartName1["ThanhTien"] . '</td>
                                   <th>
-                                      <a class="btn btn-info" href="edit-booking.php?Id=' . $cartName1['Id'] . '&IdDH=' . $donhang[$key]["Id"] . '">Sửa</a> 
-                                      <a class="btn btn-danger delete" Id="' . $cartName1["Id"] . '"href="delete-booking.php?Id=' . $cartName1["Id"] . '&IdDH=' . $donhang[$key]["Id"] . '">Xóa</a>
+                                      <a class="btn-delete" href="edit-booking.php?Id=' . $cartName1['Id'] . '&IdDH=' . $donhang[$key]["Id"] . '"><i class="fa-solid fa-pen-to-square"></i></a> &nbsp
+                                      <a class="btn-delete" Id="' . $cartName1["Id"] . '"href="delete-booking.php?Id=' . $cartName1["Id"] . '&IdDH=' . $donhang[$key]["Id"] . '"><i class="fa-solid fa-trash"></i></a>
                                   </th>
                               </tr>
                               ';
@@ -69,7 +69,7 @@ if (isset($_SESSION['id_kh']) && (implode($countCart[0]) > 0)) {
             </table>
         </div>
     </div>
-    <br><br><br><br>
+    <br><br><br><br><br>
     <!-- //main -->
 <?php
 

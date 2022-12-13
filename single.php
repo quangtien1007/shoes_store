@@ -78,35 +78,53 @@ require_once 'layouts/header.php';
 								';
 					}
 					?>
-					<br><br><br>
 
 					<?php
 
 					//echo '<form><a class="btn btn-success" style ="font-size: 20px;" href="booking.php?Id=' . $sanpham["Id"] . '">Add to cart <i class="fa-sharp fa-solid fa-cart-arrow-down"></i></a>';
 					echo '
-					<form action="addcart.php" method="post">
+					<form action="addcart.php" method="post" class="booking">
 						<div class="minusPlus">
-						Quantity: &nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="button" value="-" onclick="handleMinus()" />
-							<input type="text" readonly name="amount" id="amount" value="1"/>
-							<input type="button" value="+" onclick="handlePlus()" />
-							</div>
-							<br>
-						Size:    &nbsp;&nbsp;&nbsp;&nbsp;   
-							<label class="radio-inline">
-								<input type="radio" value="41" name="size" checked>41
+						<p>Quantity: </p>&nbsp;&nbsp;&nbsp;
+									<input type="button" class="btn-quantity" value="-" onclick="handleMinus()" />
+									<input type="text" readonly name="amount" id="amount" value="1"/>
+									<input type="button" class="btn-quantity" value="+" onclick="handlePlus()" />
+						</div>						
+						 
+						<div class="wrapper">
+							<p>Size:</p>
+ 							<input type="radio" name="size" value="38" id="option-1" checked>
+ 							<input type="radio" name="size" value="39" id="option-2">
+							<input type="radio" name="size" value="40" id="option-3">
+							<input type="radio" name="size" value="41" id="option-4">
+							<input type="radio" name="size" value="42" id="option-5">
+							<label for="option-1" class="option option-1">
+								<div class="dot"></div>
+								<span>38</span>
+								</label>
+							<label for="option-2" class="option option-2">
+								<div class="dot"></div>
+								<span>39</span>
 							</label>
-							<label class="radio-inline">
-								<input type="radio" value="42" name="size">42
+							<label for="option-3" class="option option-3">
+								<div class="dot"></div>
+								<span>40</span>
 							</label>
-							<label class="radio-inline">
-								<input type="radio" value="43" name="size">43
-							</label><br><br>
+							<label for="option-4" class="option option-4">
+								<div class="dot"></div>
+								<span>41</span>
+							</label>
+							<label for="option-5" class="option option-5">
+								<div class="dot"></div>
+								<span>42</span>
+							</label>
+						</div>
 							<input type="hidden" name="id" value="' . $san_pham_id . '" />
 							<input type="hidden" name="img" value="' . $sanpham['Anh1'] . '" />
 							<input type="hidden" name="tensp" value="' . $sanpham['Ten'] . '" />
 							<input type="hidden" name="gia" value="' . $sanpham['Gia'] . '" />
-							<input type="submit" class="btn btn-success" name="addtocart" value="Add to cart" />
+							<br>
+							<input type="submit" class="btn-addtocart" name="addtocart" value="Add to cart" />
 					</form>'
 					?>
 					<script>

@@ -1615,7 +1615,12 @@ span.checkbox1 {
 /*--signin end here--*/
 /*--login strat here--*/
 .login {
-  padding: 6em 0em;
+  padding: 10em 0em;
+  height: 410px;
+  background-image: url("../images/stockx_gray.png");
+  background-size: 800px;
+  background-position: 100px;
+  background-repeat: repeat;
 }
 .login-main h1 {
   font-size: 2.5em;
@@ -1708,8 +1713,9 @@ span.checkbox1 {
 .table > tfoot > tr > td {
   padding: 8px;
   line-height: 1.42857143;
-  vertical-align: top;
+  vertical-align: middle;
   border-top: none;
+  text-align: center;
 }
 .grid1 {
   margin: 1.5em 0 0;
@@ -2931,7 +2937,16 @@ span.glyphicon.glyphicon-envelope {
   font-size: 1.2em;
   margin-bottom: 1em;
 }
-
+.minusPlus{
+  width: 200px;
+  align-items: center;
+  border-radius: 5px ;
+  height: 50px;
+  box-shadow: 5px 5px 30px rgba(0,0,0,0.1);
+}
+.minusPlus p, .wrapper p{
+  color: rgb(45, 44, 44);
+}
 .mb-1 {
   margin-bottom: 1em;
 }
@@ -2942,9 +2957,10 @@ span.glyphicon.glyphicon-envelope {
   margin-top: 40px;
   color: black;
 }
-input[type="button"] .btnQuantity{
-  width: 2px;
-  background-color: red;
+input[type="button"].btn-quantity{
+  border-radius: 2px;
+  height: 50%;
+  margin-right: 10px;
 }
 .btn-cart{
   border: 1px solid black;
@@ -2956,4 +2972,103 @@ input[type="button"] .btnQuantity{
   color: black;
   background-color: white;
   transition: all 0.5s;
+}
+.btn-book,.btn-delete{
+  border: 1px solid black;
+  padding: 5px 5px;
+  color: black;
+}
+.btn-book:hover, .btn-delete:hover, .btn-addtocart:hover{
+  background-color: #000000;
+  color: white;
+  transition: 0.6s;
+}
+.btn-addtocart{
+  border: 1px solid black;
+  padding: 5px 5px;
+  width: 200px;
+  color: black;
+  border-radius: 50px;
+}
+.wrapper{
+  display: flex;
+  background: #fff;
+  height: 65px;
+  width: 300px;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  padding: 15px 5px;
+  box-shadow: 5px 5px 30px rgba(0,0,0,0.1);
+}
+.wrapper .option{
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+}
+.wrapper .option{
+  height: 30px;
+  width: 30px;
+  background: #d9d9d9;
+  border-radius: 20%;
+  position: relative;
+}
+.wrapper .option::before{
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 12px;
+  height: 12px;
+  background-color: #000000;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+  color: white;
+}
+input[type="radio"]{
+  display: none;
+}
+#option-1:checked:checked ~ .option-1,
+#option-2:checked:checked ~ .option-2,
+#option-3:checked:checked ~ .option-3,
+#option-4:checked:checked ~ .option-4,
+#option-5:checked:checked ~ .option-5{
+  border-color: #000000;
+  background: #000000;
+}
+#option-1:checked:checked ~ .option-1,
+#option-2:checked:checked ~ .option-2,
+#option-3:checked:checked ~ .option-3,
+#option-4:checked:checked ~ .option-4,
+#option-5:checked:checked ~ .option-5{
+  background: rgb(0, 0, 0);
+}
+#option-1:checked:checked ~ .option-1::before,
+#option-2:checked:checked ~ .option-2::before,
+#option-3:checked:checked ~ .option-3::before,
+#option-4:checked:checked ~ .option-4::before,
+#option-5:checked:checked ~ .option-5::before{
+  opacity: 1;
+  transform: scale(1);
+}
+.wrapper .option span{
+  font-size: 14px;
+  color: #121010;
+}
+#option-1:checked:checked ~ .option-1 span,
+#option-2:checked:checked ~ .option-2 span,
+#option-3:checked:checked ~ .option-3 span,
+#option-4:checked:checked ~ .option-4 span,
+#option-5:checked:checked ~ .option-5 span{
+  color: #fff;
 }

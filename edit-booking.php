@@ -50,6 +50,7 @@ $title = 'Sửa sản phẩm';
 require_once 'layouts/header.php';
 ?>
 <!-- main -->
+<br><br><br><br>
 <div class="main theloai">
     <div class="container">
         <h4 class="edit-booking" style="font-size: 30px; text-align: center;">Sửa thông tin đơn hàng</h4>
@@ -89,7 +90,7 @@ require_once 'layouts/header.php';
                 <label for="GhiChu">Ghi chú</label>
                 <input type="text" name="GhiChu" class="form-control" id="GhiChu" value="<?php echo $donhang['GhiChu'] ?>" required>
             </div>
-            <button type="submit" class="btn btn-success" name="Edit">Cập nhật</button>
+            <button type="submit" class="btn-book" name="Edit">Cập nhật</button>
         </form>
     </div>
 </div>

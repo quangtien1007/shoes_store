@@ -28,7 +28,7 @@ $brand = $db->fetch_assoc($sql_get_brand);
 			window.scrollTo(0, 1);
 		}
 	</script>
-	<script src="https://kit.fontawesome.com/196c7f2541.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/80a51985d7.js" crossorigin="anonymous"></script>
 	<script src="js/app_admin.js"></script>
 </head>
 
