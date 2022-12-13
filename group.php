@@ -16,6 +16,7 @@ if (isset($_GET['Id'])) {
 require_once 'layouts/header.php';
 ?>
 <!--product start here-->
+<br><br><br><br>
 <div class="product">
     <div class="container">
         <h2> <?php echo $ten_brand; ?> Products</h2><br>

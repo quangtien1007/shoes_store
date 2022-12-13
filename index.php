@@ -3,11 +3,12 @@ $title = 'Home';
 require_once 'layouts/header.php';
 ?>
 <!--banner strat here-->
+<br><br><br><br>
 <div class="banner">
 	<div class="container">
 		<div class="banner-main">
 			<div class="col-md-6 banner-left">
-				<img src="images/bannerjordan1.png" alt="" class="img-responsive1" width="540px">
+				<a href="./"><img src="images/bannerjordan1.png" alt="" class="img-responsive1" width="540px"></a>
 			</div>
 			<div class="col-md-6 banner-right simpleCart_shelfItem">
 				<span class="bann-heart"></span>

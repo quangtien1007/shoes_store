@@ -5,9 +5,11 @@ if (isset($_SESSION['cart'])) {
     //echo var_dump($_SESSION['cart']);
     // echo '<br> Ban co tiep tuc <a href="index.php">mua hang khong';
 ?>
+    <br><br><br><br>
     <div class="main booking">
         <div class="container">
-            <h4 class="label label-primary">Giỏ hàng của bạn</h4>
+            <br>
+            <h2>Giỏ hàng của bạn</h2>
             <br>
             <table class="table table-hover">
                 <tr>
@@ -43,17 +45,22 @@ if (isset($_SESSION['cart'])) {
                 }
                 ?>
             </table>
-            <p><a style="float:right;
-                    margin-right: 20px;" href="delcart.php" class="btn btn-danger">Xóa giỏ hàng</a></p>
-            <a class="btn btn-info" style="margin-left: 10px;" href="index.php">Tiếp tục mua sắm nào</a>
+            <style>
+                td {
+                    vertical-align: middle;
+                }
+            </style>
+            <p><a class="btn-cart" style="float:right;
+                    margin-right: 20px;" href="delcart.php">Xóa giỏ hàng</a></p>
+            <a class="btn-cart" style="margin-left: 10px;" href="index.php">Tiếp tục mua sắm nào</a>
             <?php
             if (!isset($_SESSION['id_kh'])) {
-                echo '<a class="btn btn-warning" href="admin/login.php">Đăng nhập để đặt hàng</a>';
+                echo '<a class="btn-cart" href="admin/login.php">Đăng nhập để đặt hàng</a>';
             }
             ?>
         </div>
     </div>
-    <br>
+    <br><br>
 <?php
 } else {
     echo 'Giỏ hàng rỗng hãy <a href="index.php">tiếp tục mua sắm</a>';

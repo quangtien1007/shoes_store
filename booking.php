@@ -41,7 +41,7 @@ if (isset($_SESSION['id_kh'])) {
     VALUES ('$Id_DonHang','$TenKH','$TenSP', '$Size','$SoLuong','$DiaChi', '$Gia','$ThanhTien','$GhiChu');";
       $db->query($sql);
 
-      new Redirect("list-booking.php");
+      new Redirect("cart.php");
     }
   }
 
@@ -53,7 +53,7 @@ if (isset($_SESSION['id_kh'])) {
   <!-- main -->
   <div class="main theloai" width="300px">
     <div class="container">
-      <h4 class="label-booking" style="font-size: 40px; text-align: center;">Đặt hàng</h4>
+      <h2>Đặt hàng</h2>
       <form action="booking.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <input type="hidden" name="HinhAnh" value="<?php echo $sanpham['Anh1'] ?>" </div>

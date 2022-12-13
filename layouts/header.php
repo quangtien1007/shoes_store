@@ -13,9 +13,9 @@ $brand = $db->fetch_assoc($sql_get_brand);
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 	<!-- Custom Theme files -->
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="shortcut icon" href="images/stockxlogo.png">
 	<!-- Custom Theme files -->
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -36,7 +36,7 @@ $brand = $db->fetch_assoc($sql_get_brand);
 	<!--header strat here-->
 	<div class="header">
 		<div class="container">
-			<div class="header-main" id="stick">
+			<div class="header-main">
 				<div class="top-nav">
 					<div class="content white">
 						<nav class="navbar navbar-default" role="navigation">
@@ -98,25 +98,26 @@ $brand = $db->fetch_assoc($sql_get_brand);
 							<form action="timsanpham.php" method="POST">
 								<input class="serch" id="noidung" name="noidung" type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" />
 							</form>
-
 						</div>
 					</div>
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="list-booking.php"><i class="fa-sharp fa-solid fa-cart-arrow-down"></i> Cart</a>
+							<?php
+							if (isset($_SESSION['id_kh'])) {
+							?>
+								<a href="cart.php"><i class="fa-sharp fa-solid fa-cart-arrow-down"></i> Cart</a>
 						</li>
 						<li><?php
-							if (isset($_SESSION['id_kh']))
 								echo '<a href="./admin/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>';
-							else
+							} else
 								echo '<a href="./admin/login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>';
 							?>
 						</li>
-
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	</div>
 	<!--header end here-->

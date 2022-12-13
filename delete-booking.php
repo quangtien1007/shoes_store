@@ -1,6 +1,6 @@
 <?php
 require_once 'library/init.php';
-$Id_SP = $_GET['idsp'];
+$Id_DH = $_GET['IdDH'];
 $Id_Cart = $_GET['Id'];
 $id = $_SESSION["id_kh"];
 $sql = "SELECT Email from account where Id=$id";
@@ -9,12 +9,15 @@ $email = $exec["Email"];
 $arr = explode("@", $email, 2);
 $cartName = $arr[0] . '_cart';
 // Tìm xem có không
-$sql_get_item = "SELECT * FROM $cartName WHERE Id='$Id_Cart'";
-if ($db->num_rows($sql_get_item)) {
+$sql_cart = "SELECT * FROM $cartName WHERE Id='$Id_Cart'";
+$sql_donhang = "SELECT * FROM $cartName WHERE Id='$Id_Cart'";
+if ($db->num_rows($sql_cart) && $db->num_rows($sql_donhang)) {
     echo "<script>confirm('Are you sure?'); </script>";
-    $sql = "DELETE FROM $cartName WHERE Id='$Id_Cart'";
-    $db->query($sql);
+    $sql_delete_cart = "DELETE FROM $cartName WHERE Id='$Id_Cart'";
+    $sql_delete_donhang = "DELETE FROM $cartName WHERE Id='$Id_DH'";
+    $db->query($sql_delete_cart);
+    $db->query($sql_delete_donhang);
     $db->close();
 
-    new Redirect("list-booking.php");
+    new Redirect("cart.php");
 }

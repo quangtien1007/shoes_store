@@ -1128,7 +1128,6 @@ img {
   vertical-align: middle;
 }
 .img-responsive1{
-  margin-top: 60px;
   display: inline-flexbox;
   max-width: 100%;
   height: auto;
@@ -4465,6 +4464,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav > li > .dropdown-menu {
+  background-color: black;
   margin-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;

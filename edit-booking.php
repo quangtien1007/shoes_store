@@ -1,9 +1,9 @@
 <?php
 require_once 'library/init.php';
-if (isset($_GET['idsp']) && isset($_GET['Id'])) {
-    $Id_SP = $_GET['idsp'];
+if (isset($_GET['IdDH']) && isset($_GET['Id'])) {
+    $Id_DH = $_GET['IdDH'];
     $Id_Cart = $_GET['Id'];
-    $sql_get_item = "SELECT * FROM donhang WHERE Id='$Id_SP'";
+    $sql_get_item = "SELECT * FROM donhang WHERE Id='$Id_DH'";
     $donhang = $db->fetch_assoc($sql_get_item)[0];
     $id = $_SESSION["id_kh"];
     $sql = "SELECT Email from account where Id=$id";
@@ -11,8 +11,8 @@ if (isset($_GET['idsp']) && isset($_GET['Id'])) {
     $email = $exec["Email"];
     $arr = explode("@", $email, 2);
     $cartName = $arr[0] . '_cart';
-    $sql_get_list = "SELECT * FROM $cartName";
-    $cart = $db->fetch_assoc($sql_get_list)[$Id_Cart];
+    $sql_get_list = "SELECT * FROM $cartName WHERE Id='$Id_Cart'";
+    $cart = $db->fetch_assoc($sql_get_list)[0];
 }
 
 if (isset($_POST['Edit'])) {
@@ -41,7 +41,7 @@ if (isset($_POST['Edit'])) {
         $updateDonhang = "UPDATE donhang SET Size='$Size', SoLuong='$SoLuong', DiaChi='$DiaChi', GhiChu='$GhiChu' WHERE Id = $Id_DonHang";
         $db->query($updateCart);
         $db->query($updateDonhang);
-        new Redirect('list-booking.php');
+        new Redirect('cart.php');
     }
 }
 ?>

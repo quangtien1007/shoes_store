@@ -43,7 +43,12 @@ a:hover {
 
 /*--header start here--*/
 .header {
+  z-index: 1000;
   padding: 1em 0em;
+  position: fixed;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.95;
 }
 .top-nav {
   float: left;
@@ -81,13 +86,13 @@ a.login:hover {
   width: 100px;
   margin-top: 5px;
   font-size: 0.85em;
-  color: #000;
+  color: rgb(255, 255, 255);
   padding: 0.3em 0.5em 0.3em 2em;
   border: none;
   outline: none;
   display: inline-block;
   font-family: "Poppins", sans-serif;
-  background: url(../images/search.png) no-repeat 3px 8px;
+  background: url(../images/loupe.png) no-repeat 3px 8px;
 }
 .search i.cart {
   background: url(../images/shop.png) no-repeat 0px 0px;
@@ -130,7 +135,7 @@ a.login:hover {
 }
 ul.nav.navbar-nav li a {
   font-size: 0.9em;
-  color: #000;
+  color: rgb(255, 255, 255);
   font-family: "Poppins", sans-serif;
   border-radius: 3px;
 }
@@ -1994,6 +1999,7 @@ span.glyphicon.glyphicon-envelope {
   .banner-left {
     float: left;
     width: 50%;
+    display: flex;
   }
   .banner-right {
     float: right;
@@ -2940,4 +2946,14 @@ input[type="button"] .btnQuantity{
   width: 2px;
   background-color: red;
 }
-
+.btn-cart{
+  border: 1px solid black;
+  padding: 10px 10px;
+  color: white;
+  background-color: black;
+}
+.btn-cart:hover{
+  color: black;
+  background-color: white;
+  transition: all 0.5s;
+}
