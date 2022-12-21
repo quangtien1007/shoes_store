@@ -17,6 +17,8 @@ $brand = $db->fetch_assoc($sql_get_brand);
 	<!-- Custom Theme files -->
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="../js/app_admin.js"></script>
+	<script src="../js/app_client.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="application/x-javascript">
@@ -61,11 +63,10 @@ $brand = $db->fetch_assoc($sql_get_brand);
 									</li>
 									<li class="nav-item dropdown">
 										<a class="nav-link" href="#" data-toggle="dropdown">
-											Brand<span class="caret"></span>
+											Brands<span class="caret"></span>
 										</a>
 
 										<ul class="dropdown-menu">
-
 											<?php
 											foreach ($brand as $b) {
 												echo "<li><a href='group.php?Id=" . $b["Id"] . "'> " . $b["TenHang"] . "</a></li>";
@@ -73,18 +74,27 @@ $brand = $db->fetch_assoc($sql_get_brand);
 											?>
 										</ul>
 									</li>
-									<?php
-									$sql_get_list = "SELECT * FROM theloai";
-									if ($db->num_rows($sql_get_list)) {
-										foreach ($db->fetch_assoc($sql_get_list) as $key => $theloai) {
-											echo
-											'
-												<li><a href="theloai.php?Id=' . $theloai['Id'] . '">' . $theloai['Ten'] . '</a></li>
-												';
-										}
-									}
-									?>
-
+									<li class="nav-iem dropdown">
+										<a class="nav-link" href="#" data-toggle="dropdown">
+											Collecions<span class="caret"></span>
+										</a>
+										<ul class="dropdown-menu">
+											<?php
+											$sql_get_list = "SELECT * FROM theloai";
+											if ($db->num_rows($sql_get_list)) {
+												foreach ($db->fetch_assoc($sql_get_list) as $key => $theloai) {
+													echo
+													'
+											<li><a href="theloai.php?Id=' . $theloai['Id'] . '">' . $theloai['Ten'] . '</a></li>
+											';
+												}
+											}
+											?>
+										</ul>
+									</li>
+									<li>
+										<a href="about.php">About</a>
+									</li>
 								</ul>
 							</div>
 							<!--/.navbar-collapse-->
@@ -100,20 +110,40 @@ $brand = $db->fetch_assoc($sql_get_brand);
 							</form>
 						</div>
 					</div>
-					<ul class="nav navbar-nav">
-						<li>
-							<?php
-							if (isset($_SESSION['id_kh'])) {
-							?>
-								<a href="cart.php"><i class="fa-sharp fa-solid fa-cart-arrow-down"></i> Cart</a>
-						</li>
-						<li><?php
-								echo '<a href="./admin/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>';
-							} else
-								echo '<a href="./admin/login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>';
-							?>
-						</li>
-					</ul>
+					<!-- <nav class="navbar navbar-default" role="navigation"> -->
+					<div class="information">
+						<ul class="nav navbar-nav">
+							<li class="nav-item dropdown">
+								<?php
+								if (!isset($_SESSION['id_kh'])) {
+									echo '<a href="./admin/login.php"><i href="./admin/login.php" class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>';
+								} else {
+									echo '<a class="nav-link" href="#" data-toggle="dropdown">';
+									echo '<i class="fa-solid fa-user"></i><span class="caret"></span>';
+								}
+								?>
+								<ul class="dropdown-menu">
+									<li>
+										<?php if (isset($_SESSION['id_kh'])) {
+											echo '<a href="./nguoidung.php"><i class="fa-solid fa-circle-user"></i> &nbsp Your account</a>';
+										?>
+									</li>
+									<li>
+										<a href="cart.php"><i class="fa-sharp fa-solid fa-cart-arrow-down"></i> &nbsp Cart</a>
+									</li>
+									<li>
+										<a href="orders.php"><i class="fa-sharp fa-solid fa-cart-shopping"></i> &nbsp Đơn hàng</a>
+									</li>
+									<li><?php
+											echo '<a href="./admin/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> &nbsp Logout</a>';
+										}
+										?>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<!-- </nav> -->
 				</div>
 			</div>
 		</div>

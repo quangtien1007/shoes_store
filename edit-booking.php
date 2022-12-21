@@ -1,18 +1,11 @@
 <?php
 require_once 'library/init.php';
-if (isset($_GET['IdDH']) && isset($_GET['Id'])) {
-    $Id_DH = $_GET['IdDH'];
-    $Id_Cart = $_GET['Id'];
-    $sql_get_item = "SELECT * FROM donhang WHERE Id='$Id_DH'";
+if (isset($_GET['Id'])) {
+    $Id = $_GET['Id'];
+    $sql_get_item = "SELECT * FROM donhang WHERE Id='$Id'";
     $donhang = $db->fetch_assoc($sql_get_item)[0];
-    $id = $_SESSION["id_kh"];
-    $sql = "SELECT Email from account where Id=$id";
-    $exec = $db->fetch_assoc($sql)[0];
-    $email = $exec["Email"];
-    $arr = explode("@", $email, 2);
-    $cartName = $arr[0] . '_cart';
-    $sql_get_list = "SELECT * FROM $cartName WHERE Id='$Id_Cart'";
-    $cart = $db->fetch_assoc($sql_get_list)[0];
+    // $sql_get_list = "SELECT * FROM $cartName WHERE Id='$Id_Cart'";
+    // $cart = $db->fetch_assoc($sql_get_list)[0];
 }
 
 if (isset($_POST['Edit'])) {
@@ -27,7 +20,7 @@ if (isset($_POST['Edit'])) {
     $Gia = isset($_POST['Gia']) ? trim(htmlspecialchars(addslashes($_POST['Gia']))) : '';
     $Size = isset($_POST['Size']) ? trim(htmlspecialchars(addslashes($_POST['Size']))) : '';
     $GhiChu = isset($_POST['GhiChu']) ? trim(htmlspecialchars(addslashes($_POST['GhiChu']))) : '';
-    $cartName1 = isset($_POST['cartName']) ? trim(htmlspecialchars(addslashes($_POST['cartName']))) : '';
+    //$cartName1 = isset($_POST['cartName']) ? trim(htmlspecialchars(addslashes($_POST['cartName']))) : '';
     if ($SoLuong == "")
         echo '<script>alert("Không được để trống tên số lượng")</script>';
     else if ($Size == "")
@@ -37,11 +30,11 @@ if (isset($_POST['Edit'])) {
     else if ($GhiChu == "")
         echo '<script>alert("Không được để trống ghi chú")</script>';
     else {
-        $updateCart = "UPDATE $cartName1 SET Size='$Size', DiaChi='$DiaChi', SoLuong='$SoLuong' WHERE Id = '$Id'";
-        $updateDonhang = "UPDATE donhang SET Size='$Size', SoLuong='$SoLuong', DiaChi='$DiaChi', GhiChu='$GhiChu' WHERE Id = $Id_DonHang";
-        $db->query($updateCart);
+        //$updateCart = "UPDATE $cartName1 SET Size='$Size', DiaChi='$DiaChi', SoLuong='$SoLuong' WHERE Id = '$Id'";
+        $updateDonhang = "UPDATE donhang SET Size='$Size', SoLuong='$SoLuong', DiaChi='$DiaChi', GhiChu='$GhiChu' WHERE Id = $Id";
+        //$db->query($updateCart);
         $db->query($updateDonhang);
-        new Redirect('cart.php');
+        new Redirect('orders.php');
     }
 }
 ?>
@@ -55,7 +48,7 @@ require_once 'layouts/header.php';
     <div class="container">
         <h4 class="edit-booking" style="font-size: 30px; text-align: center;">Sửa thông tin đơn hàng</h4>
         <form action="edit-booking.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="Id" class="form-control" id="Id" value="<?php echo $cart['Id'] ?>">
+            <input type="hidden" name="Id" class="form-control" id="Id" value="<?php echo $donhang['Id'] ?>">
             <div class="form-group">
                 <input type="hidden" name="Id_DonHang" class="form-control" id="Id_DonHang" value="<?php echo $donhang['Id_SanPham']; ?>" />
             </div>
@@ -64,15 +57,15 @@ require_once 'layouts/header.php';
             </div>
             <div class=" form-group">
                 <label for="TenSP">Tên sản phẩm</label>
-                <input type="text" class="form-control" name="TenSP" id="TenSP" readonly="readonly" value="<?php echo $cart['TenSP']; ?>" />
+                <input type="text" class="form-control" name="TenSP" id="TenSP" readonly="readonly" value="<?php echo $donhang['TenSP']; ?>" />
             </div>
             <div class="form-group">
                 <label for="Gia">Giá</label>
-                <input type="text" name="Gia" class="form-control" id="Gia" readonly="readonly" value="<?php echo $cart['Gia'] ?>" />
+                <input type="text" name="Gia" class="form-control" id="Gia" readonly="readonly" value="<?php echo $donhang['Gia'] ?>" />
             </div>
             <div class="form-group">
                 <label for="SoLuong">Số lượng</label>
-                <input type="number" name="SoLuong" class="form-control" id="SoLuong" value="<?php echo $cart['SoLuong'] ?>" />
+                <input type="number" name="SoLuong" class="form-control" id="SoLuong" value="<?php echo $donhang['SoLuong'] ?>" />
             </div>
             <div class="form-group">
                 <label for="Size">Size</label>
@@ -84,7 +77,7 @@ require_once 'layouts/header.php';
             </div>
             <div class="form-group">
                 <label for="DiaChi">Địa chỉ</label>
-                <input type="text" name="DiaChi" class="form-control" id="DiaChi" value="<?php echo $cart['DiaChi'] ?>" required>
+                <input type="text" name="DiaChi" class="form-control" id="DiaChi" value="<?php echo $donhang['DiaChi'] ?>" required>
             </div>
             <div class="form-group">
                 <label for="GhiChu">Ghi chú</label>

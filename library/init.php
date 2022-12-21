@@ -29,3 +29,12 @@ if ($session->get() != '') {
 } else {
     $user = '';
 }
+//Kiem tra da dang nhap hay chua va lay ten bang nguoi dung
+if (isset($_SESSION['id_kh'])) {
+    $id = $_SESSION["id_kh"];
+    $sql = "SELECT Email from account where Id=$id";
+    $exec = $db->fetch_assoc($sql)[0];
+    $email = $exec["Email"];
+    $arr = explode("@", $email, 2);
+    $cartName = $arr[0] . '_cart';
+}

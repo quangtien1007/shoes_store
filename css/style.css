@@ -6,6 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 h4,
 h5,
 h6,
@@ -22,10 +23,10 @@ p {
   margin: 0;
 }
 html, body {
-  font-family: 'Poppins', sans-serif;
+ font-family: 'Barlow', sans-serif;
   font-weight: 400;
   background-color: #fff;
-  font-size: 16px;
+  font-size: 17px;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -48,7 +49,7 @@ a:hover {
   position: fixed;
   width: 100%;
   background-color: #000;
-  opacity: 0.95;
+  opacity: 1;
 }
 .top-nav {
   float: left;
@@ -81,6 +82,7 @@ a.login:hover {
 .header-right {
   float: right;
   width: 30%;
+  color: white;
 }
 .search input.serch {
   width: 100px;
@@ -91,7 +93,7 @@ a.login:hover {
   border: none;
   outline: none;
   display: inline-block;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
   background: url(../images/loupe.png) no-repeat 3px 8px;
 }
 .search i.cart {
@@ -114,7 +116,7 @@ a.login:hover {
 }
 .head-signin h5 {
   font-size: 0.81em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .head-signin h5 a {
   color: #000;
@@ -129,15 +131,19 @@ a.login:hover {
 /*--navg--*/
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
+.navbar-default .navbar-nav > .open > a:focus{
   color: #fff;
   background-color: #847057;
 }
 ul.nav.navbar-nav li a {
   font-size: 0.9em;
   color: rgb(255, 255, 255);
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
   border-radius: 3px;
+}
+ul.nav.navbar-nav li a:focus{
+  color: #fff;
+  background-color: #847057;
 }
 ul.nav.navbar-nav li a:hover {
   background: #006340;
@@ -285,7 +291,7 @@ a.item_add {
 .box_1 h3 {
   color: #000;
   font-size: 0.8em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .box_1 p a {
   color: #b5b3b3;
@@ -335,7 +341,7 @@ a.item_add {
   font-weight: bold;
   color: #000;
   margin: 0.3em 0em 0.5em 0em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 span.bann-heart {
   background: url(../images/likelogo.png) no-repeat 8px 8px;
@@ -348,7 +354,7 @@ span.bann-heart {
 .banner-right h2 {
   font-size: 1.4em;
   color: #006340;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .banner-right h5 {
   font-size: 1em;
@@ -392,7 +398,7 @@ select.bann-size {
   -moz-appearance: none;
   -o-appearance: none;
   -ms-appearance: none;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
   box-shadow: 0px 0px 1px 0px rgba(204, 204, 204, 0.85);
 }
 ul.bann-btns li a {
@@ -402,7 +408,7 @@ ul.bann-btns li a {
   background: #847057;
   display: block;
   text-align: center;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 ul.bann-btns li a:hover {
   background: #006340;
@@ -420,7 +426,7 @@ ul.bann-btns li a:hover {
   font-size: 1.8em;
   color: #fff;
   margin-bottom: 0.4em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .blc-layer2-left p {
 /*  font-size: 1em;
@@ -439,12 +445,12 @@ ul.bann-btns li a:hover {
   font-size: 1em;
   color: #006340;
   margin-bottom: 0.6em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .blc-layer3-grids1 h3 {
   font-size: 1.5em;
   color: #847057;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .blc-layer3-grids1 p {
   font-size: 1em;
@@ -465,7 +471,7 @@ ul.bann-btns li a:hover {
 .blc-layer3-grids1 ul li h4 {
   font-size: 1.25em;
   color: #847057;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .blc-layer3-grids1 ul li h5 {
   font-size: 0.93em;
@@ -482,7 +488,7 @@ ul.bann-btns li a:hover {
 }
 .box-grid h3 {
   font-size: 1.5em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .box-grid h3 a {
   color: #006340;
@@ -519,17 +525,17 @@ ul.bann-btns li a:hover {
   font-size: 1em;
   color: #847057;
   margin-bottom: 1.2em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .box-grid-price-left h4 {
   font-size: 0.9em;
   color: #000;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .box-grid-price-rit h4 {
   font-size: 0.9em;
   color: #000;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 
 /*--home block start here--*/
@@ -592,7 +598,7 @@ ul.bann-btns li a:hover {
 .home-product-bottom h3 {
   font-size: 1.5em;
   margin-bottom: 0.2em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .home-product-bottom h3 a {
   color: #fff;
@@ -617,9 +623,7 @@ select.country {
   background: none;
   border: none;
   outline: none;
-  font-size: 20px;
-  font-weight: bold;
-  color: #d2d1d1;
+  color: #ffffff;
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -628,6 +632,7 @@ select.country {
 }
 select.country:hover {
   color: #006340;
+  transition: 0.5s;
 }
 .footer-grid ul li a {
   font-size: 1em;
@@ -745,7 +750,7 @@ select.country:hover {
   font-size: 2.8em;
   color: #006340;
   margin-bottom: 1em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .tems-top h2 {
   font-size: 1.5em;
@@ -793,7 +798,7 @@ span.glyphicon.glyphicon-share-alt {
 .press-left h1 {
   font-size: 2.1em;
   color: #141415;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .press-grid {
   margin-top: 2em;
@@ -820,7 +825,7 @@ span.glyphicon.glyphicon-share-alt {
   font-size: 2.1em;
   color: #006340;
   margin-bottom: 0.5em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .tems-right p {
   font-size: 1em;
@@ -960,7 +965,7 @@ span.glyphicon.glyphicon-share-alt {
   text-transform: uppercase;
   margin-bottom: 0;
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .sky-form h2 {
   background: #847057;
@@ -969,7 +974,7 @@ span.glyphicon.glyphicon-share-alt {
   text-transform: uppercase;
   margin-bottom: 0;
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .sky-form h4 {
   background: #847057;
@@ -978,7 +983,7 @@ span.glyphicon.glyphicon-share-alt {
   text-transform: uppercase;
   margin-bottom: 0;
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .sky-form section {
   margin-bottom: 20px;
@@ -1306,26 +1311,26 @@ span.glyphicon.glyphicon-share-alt {
 .single-top-left h2 {
   font-size: 1.1em;
   color: #847057;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
   margin-bottom: 0.6em;
 }
 .single-top-left h1 {
   font-size: 1.6em;
   color: #006340;
   margin-bottom: 0.5em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .single-top-left h3 {
   font-size: 1.6em;
   color: #006340;
   margin-bottom: 0.5em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .single-top-left h6 {
   font-size: 1em;
   color: #000;
   margin: 1.2em 0em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .single-top-left p {
   font-size: 1em;
@@ -1363,7 +1368,7 @@ span.glyphicon.glyphicon-share-alt {
   font-size: 1.2em;
   color: #fff;
   margin-bottom: 0.3em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .singlepage-bottom p {
   font-size: 1em;
@@ -1481,7 +1486,7 @@ ul.cart-header2 li span.no-mar-more {
 .cart-items.heading h1 {
   font-size: 1.5em;
   color: #847057;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 ul.cart-header li span h6,
 ul.cart-header1 li span h6,
@@ -1497,14 +1502,14 @@ ul.cart-header2 li span h6 {
 .signin-main h1 {
   font-size: 2em;
   color: #006340;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
   text-align: center;
 }
 .signin-main h2 {
   font-size: 1.5em;
   color: #847057;
   margin: 1em 0em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .signin-main input[type="text"] {
   font-size: 1em;
@@ -1626,13 +1631,13 @@ span.checkbox1 {
   font-size: 2.5em;
   color: #006340;
   margin-bottom: 1.4em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
   text-align: center;
 }
 .login-left h2 {
   font-size: 1.5em;
   color: #847057;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
   margin-bottom: 1em;
 }
 .login-left input[type="text"] {
@@ -1676,7 +1681,7 @@ span.checkbox1 {
 .login-right h3 {
   font-size: 1.5em;
   color: #847057;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
   margin-bottom: 1em;
 }
 .login-right p {
@@ -1736,7 +1741,7 @@ h3.typo1 {
   text-align: center;
   font-size: 3em;
   color: #006340;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .page {
   padding: 4em 0em 4em 0em;
@@ -1759,7 +1764,7 @@ h3.typo1 {
   font-size: 2.5em;
   color: #006340;
   margin: 0em 0em 0.1em 0em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .contact-top p {
   font-size: 1em;
@@ -1809,13 +1814,13 @@ h3.typo1 {
 .contact-left h2 {
   font-size: 2em;
   color: #847057;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .contact-left h4 {
   font-size: 1.3em;
   color: #000000;
   margin: 0.8em 0em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .contact-left p {
   font-size: 0.95em;
@@ -1829,7 +1834,7 @@ h3.typo1 {
   font-size: 2em;
   color: #847057;
   margin-bottom: 0.6em;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Barlow', sans-serif;
 }
 .contact-left ul {
   padding: 0em;
@@ -2943,6 +2948,7 @@ span.glyphicon.glyphicon-envelope {
   border-radius: 5px ;
   height: 50px;
   box-shadow: 5px 5px 30px rgba(0,0,0,0.1);
+  background-color: white;
 }
 .minusPlus p, .wrapper p{
   color: rgb(45, 44, 44);
@@ -2960,20 +2966,21 @@ span.glyphicon.glyphicon-envelope {
 input[type="button"].btn-quantity{
   border-radius: 2px;
   height: 50%;
-  margin-right: 10px;
 }
 .btn-cart{
   border: 1px solid black;
+  border-radius: 3px;
   padding: 10px 10px;
   color: white;
   background-color: black;
 }
 .btn-cart:hover{
   color: black;
-  background-color: white;
+  background: #fff;
   transition: all 0.5s;
 }
 .btn-book,.btn-delete{
+  border-radius: 3px;
   border: 1px solid black;
   padding: 5px 5px;
   color: black;
@@ -3035,7 +3042,7 @@ input[type="button"].btn-quantity{
   transition: all 0.3s ease;
   color: white;
 }
-input[type="radio"]{
+.wrapper input[type="radio"]{
   display: none;
 }
 #option-1:checked:checked ~ .option-1,
@@ -3071,4 +3078,115 @@ input[type="radio"]{
 #option-4:checked:checked ~ .option-4 span,
 #option-5:checked:checked ~ .option-5 span{
   color: #fff;
+}
+.information navbar-nav a:focus{
+  color: #fff;
+  background-color: #847057;
+}
+.row-nguoidung{
+  margin-right: -15px;
+  margin-left: -15px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.components-nguoidung{
+  margin-top: 50px;
+  border-radius: 5px;
+  color: white;
+  margin: 0px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+.components-nguoidung ul{
+  margin-left: 10px;
+  padding: 0;
+}
+.components-nguoidung li{
+  margin-bottom: 10px;
+  display: block;
+}
+.components-nguoidung a{
+  font-size: 14px;
+  margin-top: 10px;
+}
+.components-nguoidung a.active{
+  background-color: #006340;
+  border-color: #006340;
+}
+.components-nguoidung a.active:hover{
+  background-color: #006340;
+  border-color: #006340;
+}
+.container-nguoidung{
+  margin-bottom: 30px;
+}
+.testdiachi{
+  width: 100%;
+ padding: 0;
+ border-radius: 6px;
+ background-color: rgb(207, 207, 207);
+}
+.title-diachi{
+  padding-left: 15px ;
+}
+.title-diachi li{
+  display: inline-block;
+}
+.title-diachi li.edit-diachi{
+  float: right;
+  margin-right: 5px;
+}
+.diachi-item{
+  background-color: #006340;
+  border-radius: 5px;
+  color: white;
+}
+.diachi-item a{
+  cursor: pointer;
+  color: white;
+}
+.testdiachi .sua-diachi{
+  display: none;
+}
+.form_edit_diachi{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+input[type="text"].diachi, input[type="password"].diachi{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#confirm-order, #cancel-order, #confirm-cancel-order{
+  display: none;
+}
+#confirm-order, #cancel-order, #confirm-cancel-order, #info-order{
+  bottom: 0;
+}
+a{
+  cursor: pointer;
+  text-decoration: none;
+}
+.page-about p{
+  margin-top: 30px;
+  text-align:justify;
+  font-size: 19px;
+}
+.btn-order{
+  border-radius: 3px;
+  /* border: 1px solid white; */
+  padding: 5px 5px;
+  color: rgb(0, 0, 0);
+}
+.btn-order:hover{
+  background-color: #000000;
+  color: white;
+  transition: 0.6s;
+}
+#diachi_nguoidung, #doimatkhau_nguoidung{
+  display: none;
+  width: 80%;
+}
+.row-s{
+  margin-top: 50px;
 }

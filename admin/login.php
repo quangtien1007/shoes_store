@@ -19,6 +19,7 @@ if (isset($_POST['Login'])) {
         } else if ($db->num_rows($sql1)) {
             $id = $db->fetch_assoc($sql2)[0];
             $_SESSION["id_kh"] = $id["Id"];
+            $_SESSION["email"] = $Email;
             $db->close(); // Giải phóng
             $session->send($Email);
             new Redirect("../index.php");

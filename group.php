@@ -1,6 +1,5 @@
 <?php
 require_once 'library/init.php';
-$title = '';
 if (isset($_GET['Id'])) {
     $get_Id = $_GET['Id'];
     $sql_get_list = "SELECT * FROM sanpham WHERE brand_id='$get_Id'";
@@ -21,7 +20,9 @@ require_once 'layouts/header.php';
     <div class="container">
         <h2> <?php echo $ten_brand; ?> Products</h2><br>
         <div class="product-main">
+            <!-- <div class="col-sm-1"></div> -->
             <div class="product-block">
+                <!-- <div class="col-sm-10"> -->
                 <?php
                 foreach ($sanpham as $key => $sanpham) {
                     echo
@@ -40,7 +41,7 @@ require_once 'layouts/header.php';
 											<p>Find out now</p>
 										</div>
 										<div class="srch">
-											<span>' . $sanpham['Gia'] . '</span>
+											<span>' . $sanpham['Gia'] . '$</span>
 										</div>
 									</div>
 								</div>
@@ -50,6 +51,7 @@ require_once 'layouts/header.php';
 
                 <div class="clearfix"> </div>
             </div>
+            <!-- <div class="col-sm-1"></div> -->
         </div>
     </div>
 </div>

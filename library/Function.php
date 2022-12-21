@@ -10,7 +10,6 @@ class Redirect {
     }
 }
 
-
 class UploadImage {
     private $check;
     

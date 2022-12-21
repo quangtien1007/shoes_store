@@ -1,88 +1,85 @@
 <?php
-require_once 'library/init.php';
-$title = 'Danh sách đơn hàng';
+$title = "List cart";
 require_once 'layouts/header.php';
-if (isset($_SESSION['id_kh'])) {
-    $id = $_SESSION["id_kh"];
-    $sql = "SELECT Email from account where Id=$id";
-    $exec = $db->fetch_assoc($sql)[0];
-    $email = $exec["Email"];
-    $arr = explode("@", $email, 2);
-    $cartName = $arr[0] . '_cart';
-    $cart = "SELECT COUNT(*) FROM $cartName";
-    $countCart = $db->fetch_assoc($cart);
-}
-if (isset($_SESSION['id_kh']) && (implode($countCart[0]) > 0)) {
+require_once 'library/init.php';
+
+// if (isset($_SESSION['cart'])) {
+$sql = "SELECT * FROM $cartName";
+$cart = $db->fetch_assoc($sql);
+$sqlCount = "SELECT COUNT(*) FROM $cartName";
+$countCart = $db->fetch_assoc($sqlCount);
+$count = implode($countCart[0]);
+if ($count > 0) {
 ?>
-    <!-- main -->
     <br><br><br><br>
     <div class="main booking">
         <div class="container">
-            <h2>Đơn hàng của bạn</h2>
             <br>
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Hình ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Giá</th>
-                        <th>Địa chỉ</th>
-                        <th>Số lượng</th>
-                        <th>Thành tiền</th>
-                        <th>Chức năng</th>
-                    </tr>
-                </thead>
-                <tbody class="body-table-san-pham">
-                    <?php
-                    // $id = $_SESSION["id_kh"];
-                    // $sql = "SELECT Email from account where Id=$id";
-                    // $exec = $db->fetch_assoc($sql)[0];
-                    // $email = $exec["Email"];
-                    // $arr = explode("@", $email, 2);
-                    // $cartName = $arr[0] . '_cart';
-                    $sql_get_list = "SELECT * FROM $cartName ORDER BY Id ASC";
-                    $sql_get_list1 = "SELECT * FROM donhang";
-                    $donhang = $db->fetch_assoc($sql_get_list1);
-                    if ($db->num_rows($sql_get_list)) {
-                        foreach ($db->fetch_assoc($sql_get_list) as $key => $cartName1) {
-                            echo
-                            '
-                              <tr Id="' . $cartName1["Id"] . '" >
-                                  <td>' . ($key + 1) . '</td>
-                                  <td><img src="' . $cartName1["HinhAnh"] . '" width="100px"/></td>
-                                  <td>' . $cartName1["TenSP"] . '</td>
-                                  <td>' . $cartName1["Gia"] . '</td>
-                                  <td>' . $cartName1["DiaChi"] . '</td>
-                                  <td>' . $cartName1["SoLuong"] . '</td>
-                                  <td>' . $cartName1["ThanhTien"] . '</td>
-                                  <th>
-                                      <a class="btn-delete" href="edit-booking.php?Id=' . $cartName1['Id'] . '&IdDH=' . $donhang[$key]["Id"] . '"><i class="fa-solid fa-pen-to-square"></i></a> &nbsp
-                                      <a class="btn-delete" Id="' . $cartName1["Id"] . '"href="delete-booking.php?Id=' . $cartName1["Id"] . '&IdDH=' . $donhang[$key]["Id"] . '"><i class="fa-solid fa-trash"></i></a>
-                                  </th>
-                              </tr>
-                              ';
-                        }
-                    }
-                    ?>
-                </tbody>
+            <h2>Giỏ hàng của bạn</h2>
+            <br>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>STT</th>
+                    <th>Hình</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Size</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th>Chức năng</th>
+                    <th></th>
+                </tr>
+                <?php
+                $tong = 0;
+                $i = 0;
+                foreach ($cart as $c) {
+                    $ttien = $c['Gia'] * $c['SoLuong'];
+                    $tong += $ttien;
+
+                    echo '
+                <tr>
+                    <td>' . ($i + 1) . '</td>
+                    <td><img src="' . $c['HinhAnh'] . '" width="100px"/></td>
+                    <td>' . $c['TenSP'] . '</td>
+                    <td>' . $c['Gia'] . '$</td>
+                    <td>' . $c['Size'] . '</td>
+                    <td>' . $c['SoLuong'] . '</td>
+                    <td>' . number_format($ttien) . '$</td>
+                    <td><a class="btn-book" href="booking.php?Id=' . $c['IdSP'] . '&i=' . $i . '">Đặt hàng</a></td>
+                    <td><a class="btn-delete" href="delcart.php?id=' . $c['Id'] . '"><i class="fa-solid fa-trash"></i></a></td>
+                </tr>';
+                    $i++;
+                }
+                ?>
             </table>
+            <style>
+
+            </style>
+            <br>
+            <p><a class="btn-cart" style="float:right;
+                    margin-right: 20px;" href="delcart.php">Xóa giỏ hàng</a></p>
+            <a class="btn-cart" style="margin-left: 10px;" href="index.php">Tiếp tục mua sắm nào</a>
+            <?php
+            if (!isset($_SESSION['id_kh'])) {
+                echo '<a class="btn-cart" href="admin/login.php">Đăng nhập để đặt hàng</a>';
+            }
+            ?>
         </div>
     </div>
-    <br><br><br><br><br>
-    <!-- //main -->
+    <br>
 <?php
-
 } else {
-    echo '<div class="main booking">
-    <div class="container" style="text-align: center;">
-        <h4 class="label label-primary">Đơn hàng của bạn</h4>
-        <img src="images/empty-cart.png" width="30%"/>
-        <h2><i class="fa-light fa-cart-circle-exclamation"></i></h2>
-        <h4>Giỏ hàng rỗng <a href="index.php">tiếp tục đặt hàng nào</a></h4>
-        <br>
-    </div>
-</div>';
+    echo '
+    <br><br>
+    <div class="main booking">
+        <div class="container" style="text-align: center;">
+            <h2>Giỏ hàng của bạn</h2>
+            <img src="images/empty-cart.png" width="30%"/>
+            <h2><i class="fa-light fa-cart-circle-exclamation"></i></h2>
+            <h4>Giỏ hàng rỗng <a href="index.php">tiếp tục đặt hàng nào</a></h4>
+            <br>
+        </div>
+    </div>';
 }
 require_once 'layouts/footer.php';
 ?>

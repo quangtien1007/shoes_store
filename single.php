@@ -38,7 +38,7 @@ require_once 'layouts/header.php';
 	<div class="container">
 		<div class="single-main">
 			<div class="single-top-main">
-				<div class="col-md-5 single-top">
+				<div class="col-md-6 single-top">
 					<div class="flexslider">
 						<?php
 						if (isset($sanpham)) {
@@ -67,7 +67,7 @@ require_once 'layouts/header.php';
 
 					</div>
 				</div>
-				<div class="col-md-7 single-top-left simpleCart_shelfItem">
+				<div class="col-md-6 single-top-left simpleCart_shelfItem">
 					<?php
 					if (isset($sanpham)) {
 						echo
@@ -90,7 +90,7 @@ require_once 'layouts/header.php';
 									<input type="text" readonly name="amount" id="amount" value="1"/>
 									<input type="button" class="btn-quantity" value="+" onclick="handlePlus()" />
 						</div>						
-						 
+						 <br>
 						<div class="wrapper">
 							<p>Size:</p>
  							<input type="radio" name="size" value="38" id="option-1" checked>
