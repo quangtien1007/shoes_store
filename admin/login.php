@@ -1,37 +1,3 @@
-<?php
-require_once '../library/init.php';
-if (isset($_POST['Login'])) {
-    // echo 'ok';
-    // Xử lý các giá trị 
-    $Email = isset($_POST['Email']) ? trim(htmlspecialchars(addslashes($_POST['Email']))) : '';
-    $Password = isset($_POST['Password']) ? trim(htmlspecialchars(addslashes($_POST['Password']))) : '';
-
-    if ($Email == "" || $Password == "") {
-        echo '<script>alert("Không được để trống Email và Password")</script>';
-    } else {
-        $sql = "SELECT Email, Password FROM account WHERE Email = '$Email' AND Password = '$Password' AND LoaiTK = 1";
-        $sql1 = "SELECT Email, Password FROM account WHERE Email = '$Email' AND Password = '$Password' AND LoaiTK = 2";
-        $sql2 = "SELECT Id, Email, Password FROM account WHERE Email = '$Email' AND Password = '$Password' AND LoaiTK = 2";
-        if ($db->num_rows($sql)) {
-            $db->close(); // Giải phóng
-            $session->send($Email);
-            new Redirect("the-loai.php");
-        } else if ($db->num_rows($sql1)) {
-            $id = $db->fetch_assoc($sql2)[0];
-            $_SESSION["id_kh"] = $id["Id"];
-            $_SESSION["email"] = $Email;
-            $db->close(); // Giải phóng
-            $session->send($Email);
-            new Redirect("../index.php");
-        } else {
-            echo '<script>alert("Email hoặc Password không đúng")</script>';
-        }
-    }
-}
-?>
-
-
-
 <!DOCTYPE HTML>
 <html>
 
@@ -41,7 +7,7 @@ if (isset($_POST['Login'])) {
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-1.11.0.min.js"></script>
     <!-- Custom Theme files -->
-    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../css/login.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Custom Theme files -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -49,10 +15,59 @@ if (isset($_POST['Login'])) {
 </head>
 
 <body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="../model/xllogin.php" method="post">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span></span>
+                <input type="text" name="Name" placeholder="Tên" />
+                <input type="email" name="Email" placeholder="Email" />
+                <input type="password" name="Password" placeholder="Password" />
+                <input type="text" name="DiaChi" placeholder="Địa chỉ" />
+                <input type="text" name="SDT" placeholder="Số điện thoại" />
+                <button class="signup" name="Signup">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="../model/xllogin.php" method="post">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span></span>
+                <input type="email" name="Email" placeholder="Email" />
+                <input type="password" name="Password" placeholder="Password" />
+                <a href="#">Forgot your password?</a>
+                <button class="signin" name="Signin">Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal details</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hi There!</h1>
+                    <p>Enter your personal details to open an account with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script src="../js/app_client.js" charset="utf-8"></script>
     <!--header end here-->
     <!--log in start here-->
-    <div class="login">
+    <!-- <div class="login">
         <div class="container-login">
             <div class="logins-main">
                 <h1>Login</h1>
@@ -74,9 +89,9 @@ if (isset($_POST['Login'])) {
                 <div class="clearfix"> </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--log in end here-->
-    <style>
+    <!-- <style>
         .container-login {
             width: 50%;
             margin-left: auto;
@@ -106,7 +121,7 @@ if (isset($_POST['Login'])) {
         .li-login li a.btn-signup:hover {
             background: #847057;
         }
-    </style>
+    </style> -->
 </body>
 
 </html>

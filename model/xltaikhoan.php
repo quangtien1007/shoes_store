@@ -26,7 +26,7 @@ if (isset($_POST['Sua'])) {
                     SET LoaiTK = '$Loai', Email='$Email' WHERE Id = $Id ;";
         $db->query($sql);
         echo '<script>alert("Đã sửa tài khoản")</script>';
-        new Redirect("taikhoan.php");
+        new Redirect("../admin/taikhoan.php");
     }
 }
 if (isset($_GET['IdXoa'])) {

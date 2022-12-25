@@ -14,7 +14,7 @@ require_once 'layouts/header.php';
         <a id="buttonthem" class="btn-cart">Thêm thể loại</a>
         <br>
         <div id="formthem">
-            <form method="post" class="form-inline" action="xltheloai.php">
+            <form method="post" class="form-inline" action="../model/xltheloai.php">
                 <input type="hidden" name="action" value="them">
                 <input type="text" name="Ten" placeholder="Nhập tên thể loại">
                 <input type="submit" height="20px" name="Them" value="Thêm" class="btn-book">
@@ -47,7 +47,7 @@ require_once 'layouts/header.php';
                             $idsua = $_GET['Id'];
                             if ($theloai['Id'] == $idsua) {
                 ?>
-                                <form method="POST" action="xltheloai.php">
+                                <form method="POST" action="../model/xltheloai.php">
                                     <tr Id="<?php $theloai['Id']; ?>">
                                         <td>1</td>
                                         <td>
@@ -67,7 +67,7 @@ require_once 'layouts/header.php';
                                   <td>' . ($key + 1) . '</td>
                                   <td>' . $theloai["Ten"] . '</td>
                                   <td>
-                                      <a id="btn-sua" class="btn-book" href="xltheloai.php?Id=' . $theloai["Id"] . '">Sửa</a>
+                                      <a id="btn-sua" class="btn-book" href="the-loai.php?Id=' . $theloai["Id"] . '">Sửa</a>
                                       <a class="btn-book delete" Id="' . $theloai["Id"] . '" href="xltheloai.php?IdXoa=' . $theloai["Id"] . '">Xóa</a>
                                   </td>
                               </tr>

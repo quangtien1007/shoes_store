@@ -4,46 +4,12 @@ $sql_get_theloai = "SELECT * FROM theloai";
 $sql_get_brand = "SELECT * FROM brand";
 $theloai = $db->fetch_assoc($sql_get_theloai);
 $brand = $db->fetch_assoc($sql_get_brand);
-if (isset($_POST['Them'])) {
-    // Xử lý các giá trị 
-    $Ten = isset($_POST['Ten']) ? trim(htmlspecialchars(addslashes($_POST['Ten']))) : '';
-    $MoTa = isset($_POST['MoTa']) ? trim(htmlspecialchars(addslashes($_POST['MoTa']))) : '';
-    $Gia = isset($_POST['Gia']) ? trim(htmlspecialchars(addslashes($_POST['Gia']))) : '';
-    $TheLoaiId = isset($_POST['TheLoaiId']) ? trim(htmlspecialchars(addslashes($_POST['TheLoaiId']))) : '';
-    $brandID = isset($_POST['brandID']) ? trim(htmlspecialchars(addslashes($_POST['brandID']))) : '';
 
-    if ($Ten == "" || $MoTa == "" || $Gia == "" || $TheLoaiId == "" || $brandID == "") {
-        echo '<script>alert("Không được để trống các trường")</script>';
-    } else {
-        $Anh1 = (new UploadImage('Anh1'))->get_check();
-        if ($Anh1 == "0") {
-            echo '<script>alert("Ảnh 1 bị lỗi")</script>';
-        } else {
-            $Anh2 = (new UploadImage('Anh2'))->get_check();
-            if ($Anh2 == "0") {
-                unlink($Anh1);
-                echo '<script>alert("Ảnh 2 bị lỗi")</script>';
-            } else {
-                $Anh3 = (new UploadImage('Anh3'))->get_check();
-                if ($Anh3 == "0") {
-                    unlink($Anh2);
-                    echo '<script>alert("Ảnh 3 bị lỗi")</script>';
-                } else {
-                    $sql = "INSERT INTO sanpham (Ten, MoTa, Gia, TheLoaiId, brand_id,Anh1, Anh2, Anh3)
-                        VALUES ('$Ten', '$MoTa', '$Gia', '$TheLoaiId','$brandID', '$Anh1', '$Anh2', '$Anh3');";
-                    $db->query($sql);
-                    new Redirect('san-pham.php');
-                }
-            }
-        }
-        new Redirect('san-pham.php');
-    }
-}
 ?>
 
 <?php
 $title = 'Thêm sản phẩm';
-require_once 'layouts/header.php';
+require_once '../admin/layouts/header.php';
 ?>
 <!-- main -->
 <br><br><br><br>
@@ -51,7 +17,7 @@ require_once 'layouts/header.php';
     <div class="container">
         <h2>Thêm sản phẩm</h2>
         <br>
-        <form action="them-san-pham.php" method="post" enctype="multipart/form-data">
+        <form action="../model/xlsanpham.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="Ten">Tên</label>
                 <input type="text" name="Ten" class="form-control" id="Ten" required>
@@ -96,11 +62,15 @@ require_once 'layouts/header.php';
                 <label for="Anh3">Ảnh 3</label>
                 <input type="file" name="Anh3" class="form-control" id="Anh3" required>
             </div>
+            <div class="form-group">
+                <label for="SoLuong">Số lượng</label>
+                <input type="text" name="SoLuong" class="form-control" id="SoLuong" required>
+            </div>
             <button type="submit" class="btn btn-default" name="Them">Thêm</button>
         </form>
     </div>
 </div>
 <!-- //main -->
 <?php
-require_once 'layouts/footer.php';
+require_once '../admin/layouts/footer.php';
 ?>

@@ -1,13 +1,13 @@
 <?php
-require_once 'library/init.php';
+require_once '../library/init.php';
 $title = 'Thông tin khách hàng';
-if (isset($_SESSION['id_kh'])) {
-    $ID = $_SESSION['id_kh'];
-    $sql = "SELECT * FROM $cartName";
-    $sql1 = "SELECT COUNT(*) FROM $cartName";
-    $cart = $db->fetch_assoc($sql);
-    $countcart = implode($db->fetch_assoc($sql1)[0]);
-}
+// if (isset($_SESSION['id_kh'])) {
+//     $ID = $_SESSION['id_kh'];
+//     $sql = "SELECT * FROM $cartName";
+//     $sql1 = "SELECT COUNT(*) FROM $cartName";
+//     $cart = $db->fetch_assoc($sql);
+//     $countcart = implode($db->fetch_assoc($sql1)[0]);
+// }
 if (isset($_SESSION['email'])) {
     $_SESSION['email'] = $email;
     $sql = "SELECT * FROM account WHERE Email='$email'";

@@ -1,5 +1,5 @@
 <?php
-require_once "library/init.php";
+require_once "../library/init.php";
 // if (isset($_SESSION['cart'])) {
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -9,8 +9,8 @@ if (isset($_GET['id'])) {
 } else {
     unset($_SESSION['cart']);
 }
-if (count($_SESSION['cart']) > 0) header('location: cart.php');
-else header('location: index.php');
+if (count($_SESSION['cart']) > 0) header('location: ../cart.php');
+else header('location: ../index.php');
 // } 
 
 // if (isset($_SESSION['cart'])) {

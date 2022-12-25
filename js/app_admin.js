@@ -26,7 +26,7 @@ $(document).ready(function() {
     // Tìm kiếm sản phẩm ở client
     $('.sanpham #noidung').keyup(function(e) {
         $.ajax({
-            url: 'tim-san-pham.php',
+            url: 'model/tim-san-pham.php',
             type: 'POST',
             dataType: 'text',
             data: {

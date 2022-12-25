@@ -14,7 +14,7 @@ require_once 'layouts/header.php';
             <a id="buttonthem" class="btn-cart">Thêm tài khoản</a>
         </div>
         <div id="formthem">
-            <form method="post" action="xltaikhoan.php" class="form-inline">
+            <form method="post" action="../model/xltaikhoan.php" class="form-inline">
                 <input type="text" name="Email" placeholder="Nhập Email">
                 <input type="text" name="Password" placeholder="Nhập password">
                 <input type="number" name="Loai" placeholder="Nhập loại tài khoản">
@@ -52,7 +52,7 @@ require_once 'layouts/header.php';
                         if (isset($_GET['Id'])) {
                             $idsua = $_GET['Id'];
                             if ($taikhoan['Id'] == $idsua) { ?>
-                                <form method="POST" action="xltaikhoan.php">
+                                <form method="POST" action="../model/xltaikhoan.php">
                                     <tr Id="<?php $taikhoan['Id']; ?>">
                                         <td>1</td>
                                         <td>
@@ -91,7 +91,7 @@ require_once 'layouts/header.php';
                             echo '
                                   <td>
                                       <a class="btn-book" href="taikhoan.php?Id=' . $taikhoan["Id"] . '">Sửa</a>
-                                      <a class="btn-book delete" name="Xoa" href="xltaikhoan.php?IdXoa=' . $taikhoan["Id"] . '">Xóa</a>
+                                      <a class="btn-book delete" name="Xoa" href="..model/xltaikhoan.php?IdXoa=' . $taikhoan["Id"] . '">Xóa</a>
                                   </td>
                               </tr>
                               ';
@@ -101,17 +101,6 @@ require_once 'layouts/header.php';
                 ?>
             </tbody>
         </table>
-        <script>
-            function myFunction() {
-                let text = "Press a button!\nEither OK or Cancel.";
-                if (confirm(text) == true) {
-                    text = "You pressed OK!";
-                } else {
-                    text = "You canceled!";
-                }
-                document.getElementById("demo").innerHTML = text;
-            }
-        </script>
     </div>
 </div>
 <!-- //main -->

@@ -327,8 +327,11 @@ a.item_add {
 }
 /*--banner strat here--*/
 .banner {
-  min-height: 620px;
-  background: rgba(129, 251, 186, 0.145);
+  min-height: 700px;
+  background-image: url(../images/stockx_gray.png);
+  background-size: 800px;
+  background-position: 1200px;
+  background-repeat: repeat;
 }
 .banner-main {
   padding: 4em 0em 3em 0em;

@@ -10,7 +10,7 @@ if (isset($_POST['Them'])) {
         $sql = "INSERT INTO theloai (Ten)
             VALUES ('$Ten');";
         $db->query($sql);
-        new Redirect('the-loai.php');
+        new Redirect('../admin/the-loai.php');
     }
 }
 if (isset($_GET['Id'])) {
@@ -32,13 +32,13 @@ if (isset($_POST['Sua'])) {
                     SET Ten = '$Ten'
                     WHERE Id = '$Id';";
         $db->query($sql);
-        new Redirect("the-loai.php");
+        new Redirect("../admin/the-loai.php");
     }
 }
 if (isset($_GET['IdXoa'])) {
     $Id = $_GET['IdXoa'];
     $sql = "DELETE FROM theloai WHERE Id='$Id'";
     $db->query($sql);
-    new Redirect("the-loai.php");
+    new Redirect("../admin/the-loai.php");
     echo '<script>alert("Đã xóa thể loại")</script>';
 }

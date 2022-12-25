@@ -66,6 +66,7 @@ require_once 'layouts/header.php';
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
+                                            <th>Mã đơn hàng</th>
                                             <th>Ngày đặt</th>
                                             <th>Thành tiền</th>
                                             <th>Trạng thái đơn hàng</th>
@@ -78,13 +79,20 @@ require_once 'layouts/header.php';
                                             foreach ($cart as $c) {
                                                 if ($c['TrangThai'] == 1 && $c['VanChuyen'] == 1) {
                                                     $TrangThai = 'Đang chờ xử lý';
-                                                    $VanChuyen = 'Đang giao hàng';
-                                                } else {
+                                                    $VanChuyen = 'Đang chờ xử lý';
+                                                } else if ($c['TrangThai'] == 2) {
                                                     $TrangThai = 'Đã xử lý';
-                                                    $VanChuyen = 'Đã giao hàng';
+                                                    $VanChuyen = 'Đang giao hàng';
+                                                } else if ($c['TrangThai'] == 0) {
+                                                    $TrangThai = 'Đã hủy';
+                                                    $VanChuyen = 'Đã hủy';
+                                                } else if ($c['TrangThai'] == 3) {
+                                                    $TrangThai = 'Đang chờ xác nhận hủy';
+                                                    $VanChuyen = 'Đang chờ xác nhận hủy';
                                                 }
                                                 echo
                                                 '<tr>
+                                            <td>#' . mt_rand(100, 300) . '</td>
                                             <td>' . $c['NgayDat'] . '</td>
                                             <td>' . $c['ThanhTien'] . '$</td>
                                             <td>' . $TrangThai . '</td>
@@ -118,7 +126,7 @@ require_once 'layouts/header.php';
                                 </div>
                             </div>
                             <div class="sua-diachi" id="edit-address">
-                                        <form action="diachi.php" method="post">
+                                        <form action="model/diachi.php" method="post">
                                             <div class="form_edit_diachi">
                                                 <input class="form-control diachi" type="text" id="" name="Ten" placeholder="Tên">
                                                 <input class="form-control diachi" type="text" id="" name="DiaChi" placeholder="Địa chỉ">
@@ -147,7 +155,7 @@ require_once 'layouts/header.php';
                         <div id="doimatkhau_nguoidung">
                             <h3>Đổi mật khẩu</h3>
                             <div class="container-nguoidung ">
-                                <form action="doimatkhau.php" method="post">
+                                <form action="model/doimatkhau.php" method="post">
                                     <input type="text" class="form-control diachi" name="Email" placeholder="Nhập email" />
                                     <input type="password" class="form-control diachi" name="oldPass" placeholder="Nhập password cũ" />
                                     <input type="password" class="form-control diachi" name="newPass" placeholder="Nhập password mới" />

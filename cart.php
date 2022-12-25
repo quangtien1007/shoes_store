@@ -46,7 +46,7 @@ if ($count > 0) {
                     <td>' . $c['SoLuong'] . '</td>
                     <td>' . number_format($ttien) . '$</td>
                     <td><a class="btn-book" href="booking.php?Id=' . $c['IdSP'] . '&i=' . $i . '">Đặt hàng</a></td>
-                    <td><a class="btn-delete" href="delcart.php?id=' . $c['Id'] . '"><i class="fa-solid fa-trash"></i></a></td>
+                    <td><a class="btn-delete" href="model/delcart.php?id=' . $c['Id'] . '"><i class="fa-solid fa-trash"></i></a></td>
                 </tr>';
                     $i++;
                 }

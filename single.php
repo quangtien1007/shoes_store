@@ -10,26 +10,6 @@ if (isset($_GET['theloai']) && isset($_GET['sanpham'])) {
 		$title = $sanpham['Ten'];
 	}
 }
-if (isset($_POST['Cart'])) {
-	if (isset($_GET['theloai']) && isset($_GET['sanpham'])) {
-		$san_pham_id = $_GET['sanpham'];
-		$the_loai_id = $_GET['theloai'];
-		$sql_get_list = "SELECT * FROM sanpham WHERE Id='$san_pham_id'";
-		if ($db->num_rows($sql_get_list)) {
-			$sanpham = $db->fetch_assoc($sql_get_list)[0];
-			$title = $sanpham['Ten'];
-			// Xử lý các giá trị 
-			$Id_DonHang = $sanpham['Id'];
-			$TenSP = $sanpham['TenSP'];
-			$Gia = $sanpham['Gia'];
-			$TrangThai = "Đang giao hàng";
-			$sql = "INSERT INTO cart (Id_DonHang,TenSP, Gia, TrangThai) 
-			VALUES ($Id_DonHang,'$TenSP',$Gia,$TrangThai);";
-			$db->query($sql);
-			new Redirect('cart.php');
-		}
-	}
-}
 require_once 'layouts/header.php';
 ?>
 <!--single start here-->
@@ -83,7 +63,7 @@ require_once 'layouts/header.php';
 
 					//echo '<form><a class="btn btn-success" style ="font-size: 20px;" href="booking.php?Id=' . $sanpham["Id"] . '">Add to cart <i class="fa-sharp fa-solid fa-cart-arrow-down"></i></a>';
 					echo '
-					<form action="addcart.php" method="post" class="booking">
+					<form action="model/addcart.php" method="post" class="booking">
 						<div class="minusPlus">
 						<p>Quantity: </p>&nbsp;&nbsp;&nbsp;
 									<input type="button" class="btn-quantity" value="-" onclick="handleMinus()" />
@@ -119,7 +99,7 @@ require_once 'layouts/header.php';
 								<span>42</span>
 							</label>
 						</div>
-							<input type="hidden" name="id" value="' . $san_pham_id . '" />
+							<input type="hidden" name="id" value="' . $sanpham['Id'] . '" />
 							<input type="hidden" name="img" value="' . $sanpham['Anh1'] . '" />
 							<input type="hidden" name="tensp" value="' . $sanpham['Ten'] . '" />
 							<input type="hidden" name="gia" value="' . $sanpham['Gia'] . '" />

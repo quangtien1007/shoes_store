@@ -49,13 +49,14 @@ require_once 'layouts/header.php';
                             });
                         });
                     </script>
-                    <div class="col-sm-8">
+                    <div class="col-sm-10">
                         <div id="info-order">
                             <h2>Đơn chờ xác nhận đặt hàng</h2>
                             <br>
                             <table class="table table-striped table-bordered">
                                 <tr>
                                     <td>Mã đơn hàng</td>
+                                    <td>Ngày đặt hàng</td>
                                     <th>Tên sản phầm</th>
                                     <th>Size</th>
                                     <th>Số lượng</th>
@@ -68,6 +69,7 @@ require_once 'layouts/header.php';
                                         echo '
                                 <tr>
                                     <td>#' . mt_rand(1, 300) . ' </td>
+                                    <td>' . $dh['NgayDat'] . '</td>
                                     <td>' . $dh['TenSP'] . '</td>
                                     <td>' . $dh['Size'] . '</td>
                                     <td>' . $dh['SoLuong'] . '</td>
@@ -88,6 +90,7 @@ require_once 'layouts/header.php';
                             <table class="table table-striped table-bordered">
                                 <tr>
                                     <td>Mã đơn hàng</td>
+                                    <td>Ngày đặt hàng</td>
                                     <th>Tên sản phầm</th>
                                     <th>Size</th>
                                     <th>Số lượng</th>
@@ -99,6 +102,7 @@ require_once 'layouts/header.php';
                                         echo '
                                 <tr>
                                     <td>#' . mt_rand(1, 300) . ' </td>
+                                    <td>' . $dh['NgayDat'] . '</td>
                                     <td>' . $dh['TenSP'] . '</td>
                                     <td>' . $dh['Size'] . '</td>
                                     <td>' . $dh['SoLuong'] . '</td>
@@ -175,7 +179,7 @@ require_once 'layouts/header.php';
                             </table>
                         </div>
                     </div>
-                    <div class="col-sm-3"></div>
+                    <!-- <div class="col-sm-3"></div> -->
                     <div class="clearfix"> </div>
                     <br>
                 </div>

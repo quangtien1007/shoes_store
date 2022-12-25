@@ -1,6 +1,34 @@
 <?php
-require_once '../library/config.php';
-session_start();
+require_once '../library/init.php';
+if (isset($_POST['Signin'])) {
+    // echo 'ok';
+    // Xử lý các giá trị 
+    $Email = isset($_POST['Email']) ? trim(htmlspecialchars(addslashes($_POST['Email']))) : '';
+    $Password = isset($_POST['Password']) ? trim(htmlspecialchars(addslashes($_POST['Password']))) : '';
+    $Pass = md5($Password);
+
+    if ($Email == "" || $Password == "") {
+        echo '<script>alert("Không được để trống Email và Password")</script>';
+    } else {
+        $sql = "SELECT Email, Password FROM account WHERE Email = '$Email' AND Password = '$Pass' AND LoaiTK = 1";
+        $sql1 = "SELECT Email, Password FROM account WHERE Email = '$Email' AND Password = '$Pass' AND LoaiTK = 2";
+        $sql2 = "SELECT Id, Email, Password FROM account WHERE Email = '$Email' AND Password = '$Pass' AND LoaiTK = 2";
+        if ($db->num_rows($sql)) {
+            $db->close(); // Giải phóng
+            $session->send($Email);
+            new Redirect("../admin/the-loai.php");
+        } else if ($db->num_rows($sql1)) {
+            $id = $db->fetch_assoc($sql2)[0];
+            $_SESSION["id_kh"] = $id["Id"];
+            $_SESSION["email"] = $Email;
+            $db->close(); // Giải phóng
+            $session->send($Email);
+            new Redirect("../index.php");
+        } else {
+            echo '<script>alert("Email hoặc Password không đúng")</script>';
+        }
+    }
+}
 if (isset($_POST['Signup'])) {
     // echo 'ok';
     // Xử lý các giá trị 
@@ -19,7 +47,7 @@ if (isset($_POST['Signup'])) {
         $insertStmt->bindParam(':hovaten', $Name);
         $insertStmt->bindParam(':sdt', $SDT);
         $insertStmt->bindParam(':diachi', $DiaChi);
-        $insertStmt->bindParam(':password', $Password);
+        $insertStmt->bindParam(':password', md5($Password));
         $insertStmt->bindParam(':email', $Email);
 
         $insertStmt->execute();
@@ -50,57 +78,3 @@ if (isset($_POST['Signup'])) {
 $updateCart = "UPDATE $cartName SET Size='$Size', DiaChi='$DiaChi', SoLuong='$SoLuong' WHERE Id = $Id_Cart";
         $updateDonhang = "UPDATE donhang SET Size='$Size', SoLuong='$SoLuong', DiaChi='$DiaChi', GhiChu='$GhiChu' WHERE Id = $Id_Cart";
 */
-?>
-
-
-
-<!DOCTYPE HTML>
-<html>
-
-<head>
-    <title>Signup</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <!-- Custom Theme files -->
-    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <!-- Custom Theme files -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="js/bootstrap.min.js"></script>
-</head>
-
-<body>
-
-    <!--header end here-->
-    <!--signup start here-->
-    <div class="login">
-        <div class="container-signup">
-            <div class="signup-main">
-                <h1>Sign up</h1>
-                <div class="col-md-6 login-left">
-                    <h2>Create new account</h2>
-                    <form action="signup.php" method="post">
-                        <input type="text" name="Name" placeholder="Họ tên" required="">
-                        <input type="text" name="Email" placeholder="Email" required="">
-                        <input type="text" name="DiaChi" placeholder="Địa chỉ" required="">
-                        <input type="text" name="SDT" placeholder="Số điện thoại" required="">
-                        <input type="Password" name="Password" placeholder="Password" required="">
-                        <input type="submit" name="Signup" value="Signup">
-                    </form>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-        </div>
-    </div>
-    <!--sign up end here-->
-    <style>
-        .container-signup {
-            width: 50%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-</body>
-
-</html>

@@ -7,36 +7,6 @@ if (isset($_GET['Id'])) {
     // $sql_get_list = "SELECT * FROM $cartName WHERE Id='$Id_Cart'";
     // $cart = $db->fetch_assoc($sql_get_list)[0];
 }
-
-if (isset($_POST['Edit'])) {
-    // echo 'ok';
-    // Xử lý các giá trị 
-    $Id = isset($_POST['Id']) ? trim(htmlspecialchars(addslashes($_POST['Id']))) : '';
-    $Id_DonHang = isset($_POST['Id_DonHang']) ? trim(htmlspecialchars(addslashes($_POST['Id_DonHang']))) : '';
-    $TenSP = isset($_POST['TenSP']) ? trim(htmlspecialchars(addslashes($_POST['TenSP']))) : '';
-    $DiaChi = isset($_POST['DiaChi']) ? trim(htmlspecialchars(addslashes($_POST['DiaChi']))) : '';
-    $GhiChu = isset($_POST['GhiChu']) ? trim(htmlspecialchars(addslashes($_POST['GhiChu']))) : '';
-    $SoLuong = isset($_POST['SoLuong']) ? trim(htmlspecialchars(addslashes($_POST['SoLuong']))) : '';;
-    $Gia = isset($_POST['Gia']) ? trim(htmlspecialchars(addslashes($_POST['Gia']))) : '';
-    $Size = isset($_POST['Size']) ? trim(htmlspecialchars(addslashes($_POST['Size']))) : '';
-    $GhiChu = isset($_POST['GhiChu']) ? trim(htmlspecialchars(addslashes($_POST['GhiChu']))) : '';
-    //$cartName1 = isset($_POST['cartName']) ? trim(htmlspecialchars(addslashes($_POST['cartName']))) : '';
-    if ($SoLuong == "")
-        echo '<script>alert("Không được để trống tên số lượng")</script>';
-    else if ($Size == "")
-        echo '<script>alert("Không được để trống tên size")</script>';
-    else if ($DiaChi == "")
-        echo '<script>alert("Không được để trống tên địa chỉ")</script>';
-    else if ($GhiChu == "")
-        echo '<script>alert("Không được để trống ghi chú")</script>';
-    else {
-        //$updateCart = "UPDATE $cartName1 SET Size='$Size', DiaChi='$DiaChi', SoLuong='$SoLuong' WHERE Id = '$Id'";
-        $updateDonhang = "UPDATE donhang SET Size='$Size', SoLuong='$SoLuong', DiaChi='$DiaChi', GhiChu='$GhiChu' WHERE Id = $Id";
-        //$db->query($updateCart);
-        $db->query($updateDonhang);
-        new Redirect('orders.php');
-    }
-}
 ?>
 <?php
 $title = 'Sửa sản phẩm';
@@ -47,7 +17,7 @@ require_once 'layouts/header.php';
 <div class="main theloai">
     <div class="container">
         <h4 class="edit-booking" style="font-size: 30px; text-align: center;">Sửa thông tin đơn hàng</h4>
-        <form action="edit-booking.php" method="post" enctype="multipart/form-data">
+        <form action="model/xlbooking.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="Id" class="form-control" id="Id" value="<?php echo $donhang['Id'] ?>">
             <div class="form-group">
                 <input type="hidden" name="Id_DonHang" class="form-control" id="Id_DonHang" value="<?php echo $donhang['Id_SanPham']; ?>" />
